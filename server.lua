@@ -20,7 +20,7 @@ vRP.prepare("gal_orgs/updateOffice", "UPDATE gal_orgs SET groupsOffice = @groups
 vRP.prepare("gal_orgs/updateRewards", "UPDATE gal_orgs SET rewards = @rewards WHERE org = @org")
 vRP.prepare("gal_orgs/updateBanco", "UPDATE gal_orgs SET banco = @banco, bancoHistorico = @bancoHistorico WHERE org = @org")
 vRP.prepare("gal_orgs/initGroups", "INSERT IGNORE INTO gal_orgs(org,maxMembros) VALUES(@org, @maxMembros)")
-vRP.prepare("gal_orgs/initTable", "CREATE TABLE IF NOT EXISTS `gal_orgs` ( `org` varchar(50) NOT NULL, `membros` text NOT NULL DEFAULT '{}', `maxMembros` int(11) NOT NULL DEFAULT 0, `anotacao` text DEFAULT NULL, PRIMARY KEY (`org`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1;")
+vRP.prepare("gal_orgs/initTable", "CREATE TABLE IF NOT EXISTS `gal_orgs` (    `org` VARCHAR(50) NOT NULL COLLATE 'latin1_swedish_ci',    `membros` TEXT NOT NULL DEFAULT '{}' COLLATE 'latin1_swedish_ci',    `banco` INT(11) NOT NULL DEFAULT '0',    `maxMembros` INT(11) NOT NULL DEFAULT '0',    `bancoHistorico` LONGTEXT NULL DEFAULT '{}' COLLATE 'utf8mb4_bin',    `rewards` LONGTEXT NULL DEFAULT '{"goals":{},"players":{},"infoGoals":{}}' COLLATE 'latin1_swedish_ci',`groupsOffice` LONGTEXT NULL DEFAULT '{}' COLLATE 'latin1_swedish_ci',    PRIMARY KEY (`org`) USING BTREE)COLLATE='latin1_swedish_ci'ENGINE=InnoDB;")
 vRP.prepare("gal_orgs/clearArmazem", "UPDATE vrp_srv_data SET dvalue = @dvalue WHERE dkey = @dkey")
 
 RegisterCommand('org', function(source,args)
