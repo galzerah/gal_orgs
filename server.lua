@@ -204,7 +204,7 @@ function src.invitePlayer(player_id, org, group)
                 end
 
                 if nsource then
-                local request = vRP.request(source, "Você está sendo convidado para a <b>"..org.."</b> deseja aceitar?", 30)
+                local request = vRP.request(nsource, "Você está sendo convidado para a <b>"..org.."</b> deseja aceitar?", 30)
 
                     if request then
                         TriggerClientEvent("Notify",source, "sucesso","O Jogador <b>aceitou</b> o convite da sua organização.", 5)
@@ -693,7 +693,6 @@ function hasPermissionInvite(myOrg)
                            return v.permissions.invite
                         end
                     end
-                    return false
                 end
                 return false
             end
@@ -727,7 +726,6 @@ function hasPermissionPromove(org)
                            return v.permissions.promove
                         end
                     end
-                    return false
                 end
                 return false
             end
@@ -761,7 +759,6 @@ function hasPermissionDemote(org)
                            return v.permissions.demote
                         end
                     end
-                    return false
                 end
                 return false
             end
@@ -793,7 +790,6 @@ function hasPermissionDeposit(user_id, org)
                            return v.permissions.deposit
                         end
                     end
-                    return false
                 end
                 return false
             end
@@ -824,7 +820,6 @@ function hasPermissionWithdraw(user_id, org)
                            return v.permissions.withdraw
                         end
                     end
-                    return false
                 end
                 return false
             end
@@ -853,7 +848,6 @@ function hasPermissionLeader(user_id, org)
                             return true
                         end
                     end
-                    return false
                 end
                 return false
             end
