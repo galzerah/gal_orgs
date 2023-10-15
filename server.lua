@@ -528,7 +528,6 @@ function src.requestConfigDatas(item, dia, mes, ano)
     
     for k,v in pairs(rowRewards.players) do
         local nuser_id = k
-        print(k)
         local nOrg, nGroup = getOrg(tonumber(k))
         if rowRewards.players[tostring(k)] and rowRewards.players[tostring(k)].dailyData[tostring(data)] and rowRewards.players[tostring(k)].dailyData[tostring(data)][item]  then
             local info = rowRewards.players[tostring(k)].dailyData[tostring(data)][item]
@@ -577,7 +576,6 @@ function src.storageItens(org)
 end
 
 function src.updateGoals(data)
-    print("0")
     local source = source
     local user_id = vRP.getUserId(source)
     local myOrg,group = getOrg(user_id)
@@ -588,7 +586,6 @@ function src.updateGoals(data)
     local rows = vRP.query("gal_orgs/getOrg", { org = myOrg })
     local rewards = json.decode(rows[1].rewards)
     local infoGoals = rewards.infoGoals[data.currentType]
-    print(infoGoals)
     if infoGoals then
         if tonumber(data.daily) > 0 then
             infoGoals.maxDaily = data.daily
@@ -598,7 +595,6 @@ function src.updateGoals(data)
             infoGoals.payment = data.payment
         end
 
-        print(tostring(json.encode(rewards)))
         return vRP.execute("gal_orgs/updateRewards", {org = myOrg, rewards = json.encode(rewards)})
     end
 end
@@ -639,7 +635,6 @@ function src.reward(data)
 
     local iraFicar = bankValue - tonumber(GoalsPayment)
     if bankValue <= 0 or iraFicar < 0 then
-        print("aqui")
         return TriggerClientEvent("Notify", source,"NEGADO", "O organização não tem dinheiro para te pagar.", 5)
     end
 
@@ -862,7 +857,6 @@ function src.registerRewards(user_id, item, amount)
     if (inAdmin[user_id]) then
          myOrg = inAdmin[user_id]
     end
-    print(amount)
     if amount <= 0 then
         amount = 0
     end
@@ -876,7 +870,6 @@ function src.registerRewards(user_id, item, amount)
     local Year = tonumber(os.date("%Y", os.time()))
 
     local data = dayOfMonth.."/"..Month.."/"..Year
-    print(tostring(data))
     if not rowRewards.players[tostring(user_id)] then
         rowRewards.players[tostring(user_id)] = {}
     end
