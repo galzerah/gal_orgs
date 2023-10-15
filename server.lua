@@ -528,17 +528,18 @@ function src.requestConfigDatas(item, dia, mes, ano)
     
     for k,v in pairs(rowRewards.players) do
         local nuser_id = k
+        print(k)
         local nOrg, nGroup = getOrg(tonumber(k))
-        if rowRewards.players[tostring(k)] and rowRewards.players[tostring(k)].dailyData[tostring(data)] and rowRewards.players[tostring(k)].dailyData[tostring(data)][item] then
+        if rowRewards.players[tostring(k)] and rowRewards.players[tostring(k)].dailyData[tostring(data)] and rowRewards.players[tostring(k)].dailyData[tostring(data)][item]  then
             local info = rowRewards.players[tostring(k)].dailyData[tostring(data)][item]
             local groupPrefix = orgsConfig.List[nOrg].groups[nGroup].prefix
             local nome = src.requestPlayerName(k)
             table.insert(goals, {user_id=k, item=vRP.getItemName(item), rank=groupPrefix, name=nome,amount = info.playerDailyFarm})
-            table.insert(player, {itemName=vRP.getItemName(item), playerDailyFarm=info.playerDailyFarm, maxDaily=rowRewards.infoGoals[item].maxDaily, payment=rowRewards.infoGoals[item].payment, playerRewarded=info.playerRewarded})
-        else 
-            table.insert(player, {itemName=vRP.getItemName(item), playerDailyFarm=0, maxDaily=rowRewards.infoGoals[item].maxDaily, payment=rowRewards.infoGoals[item].payment, playerRewarded=true})
+            if  rowRewards.players[tostring(user_id)] and rowRewards.players[tostring(user_id)].dailyData[tostring(data)][item] then
+                local myInfo = rowRewards.players[tostring(user_id)].dailyData[tostring(data)][item]
+                table.insert(player, {itemName=vRP.getItemName(item), playerDailyFarm=myInfo.playerDailyFarm, maxDaily=rowRewards.infoGoals[item].maxDaily, payment=rowRewards.infoGoals[item].payment, playerRewarded=myInfo.playerRewarded})
+            end
         end
-        table.insert(player, {itemName=vRP.getItemName(item), playerDailyFarm=0, maxDaily=rowRewards.infoGoals[item].maxDaily, payment=rowRewards.infoGoals[item].payment, playerRewarded=true})
     end
     table.insert(player, {itemName=vRP.getItemName(item), playerDailyFarm=0, maxDaily=rowRewards.infoGoals[item].maxDaily, payment=rowRewards.infoGoals[item].payment, playerRewarded=true})
 
