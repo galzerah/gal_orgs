@@ -133,7 +133,6 @@ RegisterNUICallback('requestConfigDatas', function(data, cb)
     if not Storage then return end
     
     local Response = vSERVER.requestConfigDatas(Storage[1].value)
-    print(tostring(json.encode(Response.player)))
 
     cb({ 
         firstType = Storage[1].value,

@@ -291,7 +291,6 @@ function sendName() {
 
       requestOrgs();
       $(".list-offices").html("");
-      console.log(JSON.stringify(data.list))
       data.list.map((item, index) => {
         $(".list-offices").append(`
                 <div class="item-offices" onclick="closeList(this)" data-group="${item.group}" data-prefix="${item.prefix}">
@@ -696,7 +695,6 @@ function selectOffices(officeProp, indexProp, attr) {
 }
 
 function setOfficePerm(keyProp, attrProp) {
-  console.log(selectedOffices[keyProp].status)
   let changeAudio = new Audio("audio/change.mp3");
   changeAudio.volume = 0.5;
   changeAudio.play();
@@ -780,7 +778,6 @@ function openModalGoal() {
 
 
 function loadConfigData(data) {
-  console.log(JSON.stringify(data.info))
   document.querySelector('.section-farms .content').innerHTML = '';
   document.querySelector('.section-farms .content').innerHTML = `
     <div class="calendar-table">
