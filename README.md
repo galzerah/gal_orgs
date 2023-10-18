@@ -1,5 +1,5 @@
 # gal_orgs
-Front-end do mirtin, fiz o backend do script, script de /org completo com sistema de recompensa de farm, tem de fazer umas adaptações caso queira usar isso, podem me chamar no discord, eu nao aceito pedidos de amizade, tem de me mandar mensagem que depois eu vejo e podemos ver.
+Front-end do mirtin, fiz o backend do script, script de /org completo com sistema de recompensa de farm, tem de fazer umas adaptações caso queira usar isso, nao estou dando mais suporte.
 
 /org Normal
 ![image](https://github.com/galzerah/gal_orgs/assets/88912426/882972aa-1441-46bc-88a0-09526c235874)
